@@ -41,8 +41,12 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
+                // MARK: - MAIN VIEW
                 VStack {
+                     // MARK: - HEADER
+                    Spacer(minLength: 80)
                     
+                    // MARK: - TASKS
                     List {
                         ForEach(items) { item in
                             VStack (alignment: .leading) {
@@ -60,7 +64,32 @@ struct ContentView: View {
                     .shadow(color: .black.opacity(0.5), radius: 10)
                     .padding(.vertical, 0)
                     .frame(maxWidth: 640)
+                    
+                    // MARK: - NEW TASK BUTTON
+                    Button {
+                        showNewTaskItem = true
+                    } label: {
+                        Image(systemName: "plus.circle")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 85, height: 85, alignment: .center)
+                            .foregroundColor(.white)
+                            .background(
+                                LinearGradient(gradient: Gradient(colors: [.pink, .blue]), startPoint: .leading, endPoint: .trailing)
+                            )
+                            .clipShape(Circle())
+                            .shadow(color: .black.opacity(0.7), radius: 10, x: 0, y: 0)
+                    }
+                    .padding()
                 } //: VSTACK
+                // MARK: - NEW TASK ITEM
+                if showNewTaskItem {
+                    BlankView()
+                        .onTapGesture {
+                            showNewTaskItem = false
+                        }
+                    NewTaskItemView(isShowing: $showNewTaskItem)
+                }
             } //: ZSTACK
             .onAppear() {
                 UITableView.appearance().backgroundColor = UIColor.clear
@@ -86,6 +115,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext).previewInterfaceOrientation(.portraitUpsideDown)
+        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext).previewInterfaceOrientation(.portrait)
     }
 }

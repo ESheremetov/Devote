@@ -17,6 +17,7 @@ struct NewTaskItemView: View {
     
     @State private var task: String = ""
     @State private var description: String = ""
+    @Binding var isShowing: Bool
     
     private var isButtonDisabled: Bool {
         task.isEmpty
@@ -53,6 +54,7 @@ struct NewTaskItemView: View {
             task = ""
             description = ""
             hideKeyboard()
+            isShowing = false
         }
     }
     
@@ -134,7 +136,7 @@ struct NewTaskItemView: View {
 // MARK: - PREVIEW
 struct NewTaskItemView_Previews: PreviewProvider {
     static var previews: some View {
-        NewTaskItemView()
+        NewTaskItemView(isShowing: .constant(true))
             .background(Color.gray.edgesIgnoringSafeArea(.all))
     }
 }
