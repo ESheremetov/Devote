@@ -11,7 +11,7 @@ import CoreData
 struct ContentView: View {
     
     // MARK: - PROPERTIES
-    
+    @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     @State private var task: String = ""
     @State private var showNewTaskItem: Bool = false
     
@@ -44,19 +44,44 @@ struct ContentView: View {
                 // MARK: - MAIN VIEW
                 VStack {
                      // MARK: - HEADER
+                    
+                    HStack (spacing: 10) {
+                        Text("Devote")
+                            .font(.system(.largeTitle, design: .rounded))
+                            .fontWeight(.heavy)
+                            .padding(.leading, 4)
+                            .glow(color: .white, radius: 10, opacity: self.isDarkMode ? 0.55 : 0.0)
+
+                        Spacer()
+                        
+                        EditButton()
+                            .font(.system(size: 16, weight: .semibold, design: .rounded))
+                            .padding(.horizontal, 10)
+                            .frame(minWidth: 70, minHeight: 24)
+                            .background(
+                                Capsule().stroke(Color.white, lineWidth: 2)
+                            )
+                        
+                        Button {
+                            isDarkMode.toggle()
+                        } label: {
+                            Image(systemName: isDarkMode ? "moon.circle.fill" : "moon.circle")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 24, height: 24)
+                                .font(.system(.title, design: .rounded))
+                        }
+
+                    } //: HStack
+                    .padding()
+                    .foregroundColor(.white)
+                    
                     Spacer(minLength: 80)
                     
                     // MARK: - TASKS
                     List {
                         ForEach(items) { item in
-                            VStack (alignment: .leading) {
-                                Text(item.task ?? "")
-                                    .font(.headline)
-                                    .fontWeight(.bold)
-                                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                                    .font(.footnote)
-                                    .foregroundColor(.gray)
-                            } //: LIST ITEM
+                            ListRowItemView(item: item)
                         }
                         .onDelete(perform: deleteItems)
                     } //: LIST
@@ -64,10 +89,13 @@ struct ContentView: View {
                     .shadow(color: .black.opacity(0.5), radius: 10)
                     .padding(.vertical, 0)
                     .frame(maxWidth: 640)
+                    .glow(color: .white, radius: 10, opacity: self.isDarkMode ? 0.35 : 0.0)
                     
                     // MARK: - NEW TASK BUTTON
                     Button {
-                        showNewTaskItem = true
+                        withAnimation {
+                            showNewTaskItem = true
+                        }
                     } label: {
                         Image(systemName: "plus.circle")
                             .resizable()
@@ -75,38 +103,39 @@ struct ContentView: View {
                             .frame(width: 85, height: 85, alignment: .center)
                             .foregroundColor(.white)
                             .background(
-                                LinearGradient(gradient: Gradient(colors: [.pink, .blue]), startPoint: .leading, endPoint: .trailing)
+                                self.isDarkMode ? Color.black : Color.pink
                             )
                             .clipShape(Circle())
                             .shadow(color: .black.opacity(0.7), radius: 10, x: 0, y: 0)
+                            .glow(color: .white, radius: 10, opacity: self.isDarkMode ? 0.5 : 0.0)
                     }
                     .padding()
                 } //: VSTACK
+                .blur(radius: showNewTaskItem ? 8.0 : 0.0, opaque: false)
+                .transition(.move(edge: .bottom))
+                .animation(.easeOut(duration: 0.25), value: showNewTaskItem)
+                
                 // MARK: - NEW TASK ITEM
                 if showNewTaskItem {
-                    BlankView()
+                    BlankView(backgroundColor: isDarkMode ? .black : .gray,
+                              backgroundOpacity: isDarkMode ? 0.3 : 0.5)
                         .onTapGesture {
-                            showNewTaskItem = false
+                            withAnimation {
+                                showNewTaskItem = false
+                            }
                         }
                     NewTaskItemView(isShowing: $showNewTaskItem)
+                        .transition(.move(edge: .bottom))
                 }
             } //: ZSTACK
             .onAppear() {
                 UITableView.appearance().backgroundColor = UIColor.clear
             }
             .navigationBarTitle("Daily Tasks", displayMode: .large)
-            .toolbar {
-                #if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                #endif
-            } //: TOOLBAR
+            .navigationBarHidden(true)
             .background(
-                BackgroundImageView()
-            )
-            .background(
-                backgroundGradient.ignoresSafeArea()
+                self.isDarkMode ?
+                backgroundGradientDark.ignoresSafeArea() : backgroundGradientLight.ignoresSafeArea()
             )
         } //: NAVIGATION
         .navigationViewStyle(.stack)

@@ -15,6 +15,7 @@ struct NewTaskItemView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
+    @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     @State private var task: String = ""
     @State private var description: String = ""
     @Binding var isShowing: Bool
@@ -74,7 +75,7 @@ struct NewTaskItemView: View {
                 TextField("New Task", text: $task)
                     .padding()
                     .background(
-                        Color(UIColor.systemGray6)
+                        isDarkMode ? Color(UIColor.tertiarySystemBackground) : Color(UIColor.secondarySystemBackground)
                     )
                     .onReceive(Just(task)) { _ in limitText(taskLimit)}
                     .overlay (alignment: .trailing) {
@@ -100,12 +101,18 @@ struct NewTaskItemView: View {
                 
                 TextEditor(text: $description)
                     .padding()
-                    .frame(maxHeight: 120)
-                    .cornerRadius(10)
+                    .background(
+                        isDarkMode ? Color(UIColor.tertiarySystemBackground) : Color(UIColor.secondarySystemBackground)
+                    )
                     .overlay {
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(taskIsValid ? .gray : .red)
+                            .stroke(.gray)
                             .opacity(0.5)
+                    }
+                    .cornerRadius(10)
+                    .frame(maxHeight: 120)
+                    .onAppear {
+                        UITextView.appearance().backgroundColor = .clear
                     }
                 
                 Button {
@@ -124,7 +131,7 @@ struct NewTaskItemView: View {
             } //: VSTACK
             .padding(.horizontal)
             .padding(.vertical, 20)
-            .background(.white)
+            .background(isDarkMode ? Color(UIColor.tertiarySystemBackground) : .white)
             .cornerRadius(16)
             .shadow(color: Color.black.opacity(0.65), radius: 24)
             .frame(maxWidth: 640)
