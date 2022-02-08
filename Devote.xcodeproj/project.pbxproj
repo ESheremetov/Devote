@@ -11,6 +11,7 @@
 		047B40B027A7BA4400291FB4 /* BlankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B40AF27A7BA4400291FB4 /* BlankView.swift */; };
 		048135C127ABC12B00FFDEAD /* ListRowItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048135C027ABC12B00FFDEAD /* ListRowItemView.swift */; };
 		048135C327ABCD2400FFDEAD /* CheckBoxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048135C227ABCD2400FFDEAD /* CheckBoxStyle.swift */; };
+		04D42A1727B30E4E0012724B /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D42A1627B30E4E0012724B /* SoundPlayer.swift */; };
 		04E7327927A3D2E6000D2868 /* DevoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7327827A3D2E6000D2868 /* DevoteApp.swift */; };
 		04E7327B27A3D2E6000D2868 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7327A27A3D2E6000D2868 /* ContentView.swift */; };
 		04E7327D27A3D2E8000D2868 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E7327C27A3D2E8000D2868 /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 		047B40AF27A7BA4400291FB4 /* BlankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankView.swift; sourceTree = "<group>"; };
 		048135C027ABC12B00FFDEAD /* ListRowItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowItemView.swift; sourceTree = "<group>"; };
 		048135C227ABCD2400FFDEAD /* CheckBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxStyle.swift; sourceTree = "<group>"; };
+		04D42A1627B30E4E0012724B /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		04E7327527A3D2E6000D2868 /* Devote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Devote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E7327827A3D2E6000D2868 /* DevoteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevoteApp.swift; sourceTree = "<group>"; };
 		04E7327A27A3D2E6000D2868 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				04E7329827A50C9E000D2868 /* Constant.swift */,
+				04D42A1627B30E4E0012724B /* SoundPlayer.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04D42A1727B30E4E0012724B /* SoundPlayer.swift in Sources */,
 				04E7328227A3D2E8000D2868 /* Persistence.swift in Sources */,
 				04E7329F27A690FF000D2868 /* BackgroundImageView.swift in Sources */,
 				04E7327B27A3D2E6000D2868 /* ContentView.swift in Sources */,
