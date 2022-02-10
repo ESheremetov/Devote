@@ -33,6 +33,7 @@
 		048135C027ABC12B00FFDEAD /* ListRowItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowItemView.swift; sourceTree = "<group>"; };
 		048135C227ABCD2400FFDEAD /* CheckBoxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxStyle.swift; sourceTree = "<group>"; };
 		04D42A1627B30E4E0012724B /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
+		04D42A1B27B55BBF0012724B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		04E7327527A3D2E6000D2868 /* Devote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Devote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E7327827A3D2E6000D2868 /* DevoteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevoteApp.swift; sourceTree = "<group>"; };
 		04E7327A27A3D2E6000D2868 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -90,6 +91,7 @@
 				04E7329427A3DBF0000D2868 /* Utility */,
 				04E7329227A3DBD0000D2868 /* View */,
 				04E7327E27A3D2E8000D2868 /* Preview Content */,
+				04D42A1B27B55BBF0012724B /* README.md */,
 			);
 			path = Devote;
 			sourceTree = "<group>";
