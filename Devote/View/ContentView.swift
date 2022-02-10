@@ -14,6 +14,7 @@ struct ContentView: View {
     @AppStorage("isDarkMode") private var isDarkMode: Bool = false
     @State private var task: String = ""
     @State private var showNewTaskItem: Bool = false
+    @State private var hideDescription: Bool = false
     
     @Environment(\.managedObjectContext) private var viewContext
 
@@ -84,6 +85,14 @@ struct ContentView: View {
                     List {
                         ForEach(items) { item in
                             ListRowItemView(item: item)
+                                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                    Button (role: .destructive) {
+                                        deleteItems(offsets: IndexSet([items.firstIndex(of: item)!]))
+                                    } label: {
+                                        Image(systemName: "trash.fill")
+                                    }
+                                    .tint(.black)
+                                }
                         }
                         .onDelete(perform: deleteItems)
                     } //: LIST
