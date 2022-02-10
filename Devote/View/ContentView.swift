@@ -87,7 +87,6 @@ struct ContentView: View {
                         }
                         .onDelete(perform: deleteItems)
                     } //: LIST
-                    .listStyle(.insetGrouped)
                     .shadow(color: .black.opacity(0.5), radius: 10)
                     .padding(.vertical, 0)
                     .frame(maxWidth: 640)
