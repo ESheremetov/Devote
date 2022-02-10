@@ -65,6 +65,7 @@
 		04E7326C27A3D2E6000D2868 = {
 			isa = PBXGroup;
 			children = (
+				04D42A1B27B55BBF0012724B /* README.md */,
 				04E7327727A3D2E6000D2868 /* Devote */,
 				04E7327627A3D2E6000D2868 /* Products */,
 			);
@@ -91,7 +92,6 @@
 				04E7329427A3DBF0000D2868 /* Utility */,
 				04E7329227A3DBD0000D2868 /* View */,
 				04E7327E27A3D2E8000D2868 /* Preview Content */,
-				04D42A1B27B55BBF0012724B /* README.md */,
 			);
 			path = Devote;
 			sourceTree = "<group>";

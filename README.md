@@ -3,7 +3,7 @@
 This is simple todo application with some extra features like dark mode, sounds, taptic feedback, etc.
 
 ## Classic Mode
-![Classic mode](Classic.png)
+![Classic mode](Classic)
 
 ## Classic Mode
 ![Dark mode](Dark.png)
